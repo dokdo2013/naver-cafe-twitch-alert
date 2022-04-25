@@ -1,10 +1,6 @@
 """
 Fetch Twitch RULE
 [참고] https://github.com/LeftBased/StreamLiveChecker
-
-
-
-
 """
 from time import time
 import requests

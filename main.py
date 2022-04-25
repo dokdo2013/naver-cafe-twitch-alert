@@ -1,6 +1,8 @@
 import fetch_twitch
 import write
+import db
 import asyncio
+import time
 
 
 if __name__ == '__main__':
@@ -17,12 +19,17 @@ if __name__ == '__main__':
 		'kimc6h12o6',
 	]
 
+	database = db.init()
+
 	for streamer in streamer_list:
-		[streamer, success_rate, cts] = asyncio.run(fetch_twitch.fetch(streamer))
-		
-
-	# write.write('[TEST] 자동등록 Test 중입니다', '<p>자동등록 테스트 중입니다. 곧 삭제 에정입니다. - 여의도연구원</p>')
-
+		init_list = asyncio.run(fetch_twitch.fetch(streamer))
+		db_process = db.db_process(database, init_list)
+		if db_process:
+			db.write(database, db_process)
+			if db_process[1] == 'ON':  # 뱅온일 때만 등록
+				[subject, content] = write.create_content(database, db_process)
+				write.write(subject, content)
+		time.sleep(5)
 
 
 

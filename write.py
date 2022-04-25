@@ -4,6 +4,7 @@ import os
 import urllib.request
 from urllib.parse import urlencode
 import time
+import db
 
 
 def write(subject, content):
@@ -34,3 +35,8 @@ def write(subject, content):
             time.sleep(5)
 
 
+def create_content(database, data):
+    res = db.get_info(database, data[0])
+    subject = f"[{res['streamer_name_ko']}] {res['streamer_name_ko']} 뱅온!!"
+    content = f"<p>얼른 방송 보러 오세요!!</p><a href='https://twitch.tv/{res['streamer_name']}'>https://twitch.tv/{res['streamer_name']}</a>"
+    return [subject, content]
