@@ -14,6 +14,7 @@ def write(subject, content):
         try:
             dotenv.load_dotenv()
             access_token = os.getenv('ACCESS_TOKEN')
+            access_token = access_token.replace("'", "")  # .env 저장하는 과정에서 따옴표 추가되는 문제 보정
             header = 'Bearer ' + access_token
             club_id = os.getenv('CLUB_ID')
             menu_id = os.getenv('MENU_ID')
