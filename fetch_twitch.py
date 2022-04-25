@@ -49,7 +49,8 @@ async def fetch(streamer):
 		if "isLiveBroadcast" in body5:
 			cts = True
 			success_rate += 20
-		else:
+		
+		if success_rate == 0:
 			cts = False
 		print(streamer, success_rate, cts)
 	except Exception as e:
