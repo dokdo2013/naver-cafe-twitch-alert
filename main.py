@@ -20,7 +20,7 @@ if __name__ == '__main__':
 	]
 
 	database = db.init()
-
+	print("======= START =======")
 	for streamer in streamer_list:
 		init_list = asyncio.run(fetch_twitch.fetch(streamer))
 		db_process = db.db_process(database, init_list)
@@ -30,6 +30,8 @@ if __name__ == '__main__':
 				[subject, content] = write.create_content(database, db_process)
 				write.write(subject, content)
 		time.sleep(5)
+	print("======== END ========")
+	print("")
 
 
 
