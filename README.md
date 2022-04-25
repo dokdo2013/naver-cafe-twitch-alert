@@ -64,5 +64,8 @@ DB_DATABASE=  # DB Database
 DB_PORT=  # DB Port
 ```
 
-
-
+## Cronjob
+```sh
+*/3 * * * * /usr/local/bin/python3.9 {DIRECTORY}/main.py
+```
+replace {DIRECTORY} to your project directory
