@@ -37,7 +37,7 @@ def db_process(db, data):
 	if db_status != current_status_msg:
 		init_data = [streamer_idx, current_status_msg, decision_rate, current_time]
 	else:
-		init_data = False
+		init_data = [False, 'ANY']  # 배열 두번째 칸에는 아무 값이나 들어가도 됨 (빈 값만 아니면 됨)
 	return init_data
 
 
