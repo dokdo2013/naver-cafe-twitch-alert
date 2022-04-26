@@ -25,7 +25,7 @@ if __name__ == '__main__':
 	for streamer in streamer_list:
 		init_list = asyncio.run(fetch_twitch.fetch(streamer))
 		db_process = db.db_process(database, init_list)
-		if db_process:  # 이전 상태와 다를 때 게시글 중복 등록 방어를 위해 추가 요청
+		if db_process[0]:  # 이전 상태와 다를 때 게시글 중복 등록 방어를 위해 추가 요청
 			time.sleep(6)
 			init_list2 = asyncio.run(fetch_twitch.fetch(streamer))
 			db_process2 = db.db_process(database, init_list2)
