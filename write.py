@@ -23,8 +23,9 @@ def write(subject, content):
             subject = urllib.parse.quote(subject)
             content = urllib.parse.quote(content)
 
-            data = urlencode({'subject': subject, 'content': content}).encode()
-            request = urllib.request.Request(url, data=data)
+            # data = urlencode({'subject': subject, 'content': content}).encode()
+            data = 'subject=' + subject + '&content=' + content
+            request = urllib.request.Request(url, data=data.encode("UTF-8"))
             request.add_header('Authorization', header)
             response = urllib.request.urlopen(request)
             rescode = response.getcode()
