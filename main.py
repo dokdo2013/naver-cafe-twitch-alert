@@ -33,9 +33,9 @@ if __name__ == '__main__':
 				continue
 			db.write(database, db_process)
 			if db_process[1] == 'ON':  # 뱅온일 때만 등록
-				slack.send(f"[뱅온 알림] https://twitch.tv/{streamer}")
 				[subject, content] = write.create_content(database, db_process)
 				write.write(subject, content)
+				slack.send(f"[뱅온 알림] https://twitch.tv/{streamer}")
 		time.sleep(5)
 	print("======== END ========")
 	print("")
