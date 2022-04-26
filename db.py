@@ -1,5 +1,6 @@
 import os
 import dotenv
+from pytz import timezone
 import datetime
 from sqlalchemy import create_engine
 
@@ -30,7 +31,7 @@ def db_process(db, data):
 		decision_rate = 100 - success_rate
 	streamer_idx = get_idx(db, streamer_name)
 	db_status = get_db_status(db, streamer_idx)
-	current_time_now = datetime.datetime.now()
+	current_time_now = datetime.datetime.now(timezone('Asia/Seoul'))
 	current_time = current_time_now.strftime("%Y-%m-%d %H:%M:%S")
 	
 	if db_status != current_status_msg:
