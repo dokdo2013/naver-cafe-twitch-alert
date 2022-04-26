@@ -62,6 +62,8 @@ DB_USERNAME=  # DB Username
 DB_PASSWORD=  # DB Password
 DB_DATABASE=  # DB Database
 DB_PORT=  # DB Port
+
+SLACK_URL=  # Slack Webhook URL
 ```
 
 ## Cronjob

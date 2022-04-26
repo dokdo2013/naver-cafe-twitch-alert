@@ -3,6 +3,7 @@ import write
 import db
 import asyncio
 import time
+import slack
 
 
 if __name__ == '__main__':
@@ -32,6 +33,7 @@ if __name__ == '__main__':
 				continue
 			db.write(database, db_process)
 			if db_process[1] == 'ON':  # 뱅온일 때만 등록
+				slack.send(f"[뱅온 알림] https://twitch.tv/{streamer}")
 				[subject, content] = write.create_content(database, db_process)
 				write.write(subject, content)
 		time.sleep(5)
