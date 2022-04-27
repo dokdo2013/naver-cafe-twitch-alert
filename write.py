@@ -21,7 +21,7 @@ def write(subject, content):
             url = "https://openapi.naver.com/v1/cafe/" + club_id + "/menu/" + menu_id + "/articles"
 
             # [2022.04.27] URL Encoding 중복으로 돼서 발생하는 이슈 수정
-            try_count == 0:
+            if try_count == 0:
                 subject = urllib.parse.quote(subject)
                 content = urllib.parse.quote(content)
 
