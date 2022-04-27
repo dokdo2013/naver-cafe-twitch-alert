@@ -36,6 +36,8 @@ if __name__ == '__main__':
 				[subject, content] = write.create_content(database, db_process)
 				write.write(subject, content)
 				slack.send(f"[뱅온 알림] https://twitch.tv/{streamer}")
+			else:
+				slack.send(f"[뱅종 알림] https://twitch.tv/{streamer}")
 		time.sleep(5)
 	print("======== END ========")
 	print("")
