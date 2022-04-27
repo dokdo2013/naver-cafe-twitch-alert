@@ -20,12 +20,15 @@ def write(subject, content):
             menu_id = os.getenv('MENU_ID')
             url = "https://openapi.naver.com/v1/cafe/" + club_id + "/menu/" + menu_id + "/articles"
 
-            subject = urllib.parse.quote(subject)
-            content = urllib.parse.quote(content)
+            # [2022.04.27] URL Encoding 중복으로 돼서 발생하는 이슈 수정
+            try_count == 0:
+                subject = urllib.parse.quote(subject)
+                content = urllib.parse.quote(content)
 
-            # [2022.04.27] 게시물 등록시 인코딩 깨지는 이슈 있음
-            # data = 'subject=' + subject + '&content=' + content
-            data = urlencode({'subject': subject, 'content': content}).encode()
+                # [2022.04.27] 게시물 등록시 인코딩 깨지는 이슈 있음
+                # data = 'subject=' + subject + '&content=' + content
+                data = urlencode({'subject': subject, 'content': content}).encode()
+
             # request = urllib.request.Request(url, data=data.encode("UTF-8"))
             request = urllib.request.Request(url, data=data)
             request.add_header('Authorization', header)
