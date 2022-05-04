@@ -71,3 +71,6 @@ SLACK_URL=  # Slack Webhook URL
 */3 * * * * /usr/local/bin/python3.9 {DIRECTORY}/main.py
 ```
 replace {DIRECTORY} to your project directory
+
+## Deploy
+Commit to Main Branch -> Github Webhook Trigger -> Jenkins Deploy to EC2
