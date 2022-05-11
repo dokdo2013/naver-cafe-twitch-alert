@@ -1,6 +1,8 @@
 # naver-cafe-twitch-alert
 트위치 생방송을 시작하면 네이버 카페에 게시물 등록 (네이버 카페 Open API 이용)
 
+> Twitch API 연동하는 방식으로 수정 예정
+
 ## 파일 설명
 - main.py : 메인 파일
 - fetch_twitch.py : 스트리밍 중인지 확인하는 파일
