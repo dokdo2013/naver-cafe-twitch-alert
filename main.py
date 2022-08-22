@@ -4,6 +4,7 @@ import db
 import asyncio
 import time
 import slack
+import tmi
 
 
 if __name__ == '__main__':
@@ -36,6 +37,7 @@ if __name__ == '__main__':
 				[subject, content] = write.create_content(database, db_process)
 				write.write(subject, content)
 				slack.send(f"[뱅온 알림] https://twitch.tv/{streamer}")
+				tmi.send(streamer)
 			else:
 				slack.send(f"[뱅종 알림] https://twitch.tv/{streamer}")
 		time.sleep(5)
